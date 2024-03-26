@@ -36,5 +36,8 @@ return {
         end
       end, { "i", "s" }),
     })
+    opts.sources = vim.tbl_extend("force", opts.sources, {
+      { name = "orgmode" },
+    })
   end,
 }
