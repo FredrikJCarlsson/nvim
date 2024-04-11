@@ -1,9 +1,13 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.editor.mini-files",
+    "lazyvim.plugins.extras.editor.mini-move",
+    "lazyvim.plugins.extras.editor.trouble-v3",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
@@ -11,11 +15,10 @@
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.rust",
     "lazyvim.plugins.extras.lsp.none-ls",
-    "lazyvim.plugins.extras.util.project",
-    "lazyvim.plugins.extras.editor.outline"
+    "lazyvim.plugins.extras.util.project"
   ],
   "news": {
-    "NEWS.md": "2943"
+    "NEWS.md": "3415"
   },
   "version": 3
 }
