@@ -1,3 +1,4 @@
+if true then return {} end
 
 -- basic telescope configuration
 local conf = require("telescope.config").values
