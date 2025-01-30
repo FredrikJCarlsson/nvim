@@ -5,5 +5,4 @@ local opt = vim.opt
 opt.shiftwidth = 4 -- Size of an indent
 
 opt.clipboard = "unnamedplus"
-vim.g.lazyvim_picker = "snacks"
 

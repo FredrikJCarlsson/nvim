@@ -34,3 +34,10 @@ vim.keymap.set("n", "<leader>zq", "<cmd>Telescope quickfix<cr>", { desc = "Show 
 
 vim.keymap.set("n", "<leader>zz", "<cmd>XcodebuildQuickfixLine<cr>", { desc = "Quickfix Line" })
 vim.keymap.set("n", "<leader>za", "<cmd>XcodebuildCodeActions<cr>", { desc = "Show Code Actions" })
+
+
+-- Git
+vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Open diffview" })
+vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Close diffview" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "Open branch history" })
+vim.keymap.set("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "Open file history" })
