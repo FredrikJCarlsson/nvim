@@ -4,6 +4,15 @@ return {
   opts = {
     config = {
       settings = {
+        ["csharp|background_analysis"] = {
+          -- dotnet_analyzer_diagnostics_scope = "fullSolution",
+          -- dotnet_compiler_diagnostics_scope = "fullSolution",
+        },
+        ["csharp|completion"] = {
+          dotnet_provide_regex_completions = true,
+          -- dotnet_show_completion_items_from_unimported_namespaces = true,
+          dotnet_show_name_completion_suggestions = true
+        },
         ["csharp|inlay_hints"] = {
           csharp_enable_inlay_hints_for_implicit_object_creation = true,
           csharp_enable_inlay_hints_for_implicit_variable_types = true,
@@ -24,4 +33,13 @@ return {
       },
     },
   },
+  -- config = function()
+  --   -- Disable autoformat on save for C# buffers
+  --   vim.api.nvim_create_autocmd("FileType", {
+  --     pattern = "cs",
+  --     callback = function()
+  --       vim.b.autoformat = false
+  --     end,
+  --   })
+  -- end,
 }
