@@ -3,6 +3,3 @@
 -- Add any additional options here
 local opt = vim.opt
 opt.clipboard = "unnamedplus"
-vim.g.minianimate_disable = true
-vim.g.snacks_animate = false
-

@@ -1,9 +1,13 @@
 return {
-  "stevearc/overseer.nvim",
-  opts = {}, -- Load with default settings
-  config = function()
-    require("overseer").setup({
-      templates = { "builtin", "user.zig_build" },
-    })
-  end,
+    "stevearc/overseer.nvim",
+    opts = {},
+    config = function()
+        require("overseer").setup({
+            templates = {
+                "builtin",
+                "user.zig_build",
+                "user.msbuild_debug",
+            },
+        })
+    end,
 }
