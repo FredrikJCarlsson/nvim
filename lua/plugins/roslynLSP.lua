@@ -41,45 +41,45 @@ return {
 
         -- Optional function that takes an array of targets as the only argument. Return the target you
         -- want to use. If it returns `nil`, then it falls back to guessing the target like normal
-        choose_target = function()
-            vim.print("Choose target called")
-
-            -- Get the Git root
-            local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-            if not git_root or git_root == "" then
-                vim.notify("Not inside a Git repository", vim.log.levels.ERROR)
-                return nil
-            end
-            vim.print("Git root: " .. git_root)
-
-            -- Require plenary
-            local scan = require("plenary.scandir")
-
-            -- Scan for all .sln files
-            local files = scan.scan_dir(git_root, {
-                depth = 5,
-                add_dirs = false,
-                search_pattern = "%.sln$", -- Search for .sln files
-            })
-
-            for _, file in ipairs(files) do
-                vim.print("Found solution: " .. file)
-            end
-
-            -- Find and return the first .sln file
-            local match = vim.iter(files):find(function(file)
-                return true -- just pick the first one, or modify if you want user choice
-            end)
-
-            if match then
-                vim.print("Selected solution: " .. match)
-            else
-                vim.notify("No solution file found", vim.log.levels.WARN)
-            end
-
-            return match
-        end,
-        -- choose_target = nil,
+        -- choose_target = function()
+        --     vim.print("Choose target called")
+        --
+        --     -- Get the Git root
+        --     local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+        --     if not git_root or git_root == "" then
+        --         vim.notify("Not inside a Git repository", vim.log.levels.ERROR)
+        --         return nil
+        --     end
+        --     vim.print("Git root: " .. git_root)
+        --
+        --     -- Require plenary
+        --     local scan = require("plenary.scandir")
+        --
+        --     -- Scan for all .sln files
+        --     local files = scan.scan_dir(git_root, {
+        --         depth = 5,
+        --         add_dirs = false,
+        --         search_pattern = "%.sln$", -- Search for .sln files
+        --     })
+        --
+        --     for _, file in ipairs(files) do
+        --         vim.print("Found solution: " .. file)
+        --     end
+        --
+        --     -- Find and return the first .sln file
+        --     local match = vim.iter(files):find(function(file)
+        --         return true -- just pick the first one, or modify if you want user choice
+        --     end)
+        --
+        --     if match then
+        --         vim.print("Selected solution: " .. match)
+        --     else
+        --         vim.notify("No solution file found", vim.log.levels.WARN)
+        --     end
+        --
+        --     return match
+        -- end,
+        choose_target = nil,
 
         -- Optional function that takes the selected target as the only argument.
         -- Returns a boolean of whether it should be ignored to attach to or not
@@ -100,7 +100,7 @@ return {
         -- Whether or not to lock the solution target after the first attach.
         -- This will always attach to the target in `vim.g.roslyn_nvim_selected_solution`.
         -- NOTE: You can use `:Roslyn target` to change the target
-        lock_target = true,
+        lock_target = false,
     },
     -- config = function()
     --   -- Disable autoformat on save for C# buffers
