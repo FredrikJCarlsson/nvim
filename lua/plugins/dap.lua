@@ -52,6 +52,20 @@ return {
             args = { "--interpreter=vscode" },
         }
 
+        -- GDB adapter for remote debugging
+        dap.adapters.gdb = {
+            type = "executable",
+            command = "gdb",
+            args = { "--eval-command", "set print pretty on" }
+        }
+
+        -- -- CPPDBG adapter for C/C++ debugging
+        -- dap.adapters.cppdbg = {
+        --     id = "cppdbg",
+        --     type = "executable",
+        --     command = "/home/fjc/.vscode/extensions/ms-vscode.cpptools-1.22.11-linux-x64/debugAdapters/bin/OpenDebugAD7",
+        -- }
+
         dap.configurations.cs = {
             {
                 type = "coreclr",
@@ -66,5 +80,40 @@ return {
                 end,
             },
         }
+
+        dap.configurations.cpp = {
+            {
+                name = "Launch remote gdbserver UP2210V3",
+                type = "cppdbg",
+                request = "launch",
+                program = function()
+                    return vim.fn.getcwd() .. "/build/UP2210V3.out"
+                end,
+                args = {},
+                stopOnEntry = false,
+                cwd = "${workspaceFolder}",
+                environment = {},
+                externalConsole = false,
+                MIMode = "gdb",
+                miDebuggerPath = "/usr/bin/gdb-multiarch",
+                preLaunchTask = "syncAndStartGdb",
+                miDebuggerServerAddress = "10.10.11.126:1234",
+                setupCommands = {
+                    {
+                        description = "Enable pretty-printing for gdb",
+                        text = "-enable-pretty-printing",
+                        ignoreFailures = true,
+                    },
+                    {
+                        description = "Set disassembly flavor to Intel",
+                        text = "-gdb-set disassembly-flavor intel",
+                        ignoreFailures = true,
+                    },
+                },
+            },
+        }
+
+        -- Use same config for C
+        dap.configurations.c = dap.configurations.cpp
     end,
 }

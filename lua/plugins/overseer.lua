@@ -7,6 +7,8 @@ return {
                 "builtin",
                 "user.zig_build",
                 "user.msbuild_debug",
+                "user.syncAndStartGdb",
+                -- "user.UP2210V3",
             },
         })
     end,
