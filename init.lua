@@ -2,6 +2,7 @@
 require("config.lazy")
 vim.g.autoformat = false
 
+
 -- require('snacks').setup {
 --   pickers = {
 --     rga_snacks = {
