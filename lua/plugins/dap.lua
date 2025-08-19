@@ -56,7 +56,7 @@ return {
         dap.adapters.gdb = {
             type = "executable",
             command = "gdb",
-            args = { "--eval-command", "set print pretty on" }
+            args = { "--eval-command", "set print pretty on" },
         }
 
         -- -- CPPDBG adapter for C/C++ debugging
@@ -91,7 +91,7 @@ return {
                 end,
                 args = {},
                 stopOnEntry = false,
-                cwd = "${workspaceFolder}",
+                cwd = vim.fn.getcwd(),
                 environment = {},
                 externalConsole = false,
                 MIMode = "gdb",
@@ -110,6 +110,7 @@ return {
                         ignoreFailures = true,
                     },
                 },
+                console = "integratedTerminal", -- Forward terminal output to Neovim terminal
             },
         }
 
