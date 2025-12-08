@@ -1,6 +1,6 @@
 --if true then return {} end
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   opts = {
     -- Add the custom registry
     registries = {

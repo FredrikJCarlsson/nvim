@@ -1,4 +1,4 @@
-
+if true then return {} end
 return {
   -- Add the vim-visual-multi plugin to your lazy load plugins list
   {
