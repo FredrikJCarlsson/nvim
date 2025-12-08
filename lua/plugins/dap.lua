@@ -57,7 +57,7 @@ return {
         dap.adapters.gdb = {
             type = "executable",
             command = "gdb",
-            args = { "--eval-command", "set print pretty on" }
+            args = { "--eval-command", "set print pretty on" },
         }
 
         -- -- CPPDBG adapter for C/C++ debugging
@@ -92,12 +92,12 @@ return {
                 end,
                 args = {},
                 stopOnEntry = false,
-                cwd = "${workspaceFolder}",
+                cwd = vim.fn.getcwd(),
                 environment = {},
                 externalConsole = false,
                 MIMode = "gdb",
                 miDebuggerPath = "/usr/bin/gdb-multiarch",
-                preLaunchTask = "syncAndStartGdb",
+                preLaunchTask = "start-remote-gdbserver",
                 miDebuggerServerAddress = "10.10.11.126:1234",
                 setupCommands = {
                     {
@@ -107,6 +107,31 @@ return {
                     },
                     {
                         description = "Set disassembly flavor to Intel",
+                        text = "-gdb-set disassembly-flavor intel",
+                        ignoreFailures = true,
+                    },
+                },
+                console = "integratedTerminal", -- Forward terminal output to Neovim terminal
+            },
+            {
+                name = "(gdb) Launch local",
+                type = "cppdbg",
+                request = "launch",
+                program = vim.fn.getcwd() .. "/build/UP2210V3.out",
+                args = {},
+                stopOnEntry = false,
+                cwd = vim.fn.expand('%:p:h'),
+                environment = {},
+                externalConsole = false,
+                MIMode = "gdb",
+                setupCommands = {
+                    {
+                        description = "Enable pretty-printing for gdb",
+                        text = "-enable-pretty-printing",
+                        ignoreFailures = true,
+                    },
+                    {
+                        description = "Set Disassembly Flavor to Intel",
                         text = "-gdb-set disassembly-flavor intel",
                         ignoreFailures = true,
                     },
