@@ -1,3 +1,4 @@
+if true then return {} end
 -- return {
 --   -- Add Telescope plugin
 --   {
@@ -6,11 +7,11 @@
 --   },
 -- }
 -- in your lazyvim config or a separate plugin config file
-require('snacs').setup({
-  telescope = {
-    defaults = {
-      hidden = true,    -- include hidden files
-      no_ignore = true, -- include .gitignored files
-    },
-  },
-})
+-- require('snacks').setup({
+--   telescope = {
+--     defaults = {
+--       hidden = true,    -- include hidden files
+--       no_ignore = true, -- include .gitignored files
+--     },
+--   },
+-- })
