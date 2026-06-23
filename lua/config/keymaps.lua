@@ -53,6 +53,26 @@ if vim.g.vscode then
   -- Buffers / windows
   keymap.set("n", "<leader>bd", action("workbench.action.closeActiveEditor"), { desc = "Close Buffer" })
   keymap.set("n", "<leader>bo", action("workbench.action.closeOtherEditors"), { desc = "Close Other Buffers" })
+  keymap.set("n", "<leader>bb", action("workbench.action.showAllEditors"), { desc = "Switch Buffer" })
+  keymap.set("n", "<leader>`", action("workbench.action.navigateBack"), { desc = "Previous Editor" })
+
+  -- Window splits
+  keymap.set("n", "<leader>|", action("workbench.action.splitEditor"), { desc = "Split Right" })
+  keymap.set("n", "<leader>-", action("workbench.action.splitEditorDown"), { desc = "Split Below" })
+  keymap.set("n", "<leader>wd", action("workbench.action.closeEditorsInGroup"), { desc = "Close Window" })
+
+  -- Code: run / test / debug
+  keymap.set("n", "<leader>cR", action("workbench.action.tasks.runTask"), { desc = "Run Task" })
+  keymap.set("n", "<leader>dc", action("workbench.action.debug.start"), { desc = "Start/Continue Debug" })
+  keymap.set("n", "<leader>db", action("editor.debug.action.toggleBreakpoint"), { desc = "Toggle Breakpoint" })
+
+  -- Goto / peek
+  keymap.set("n", "gK", action("editor.action.peekDefinition"), { desc = "Peek Definition" })
+  keymap.set("n", "K", action("editor.action.showHover"), { desc = "Hover" })
+
+  -- Toggles
+  keymap.set("n", "<leader>uz", action("workbench.action.toggleZenMode"), { desc = "Zen Mode" })
+  keymap.set("n", "<leader>uw", action("editor.action.toggleWordWrap"), { desc = "Toggle Word Wrap" })
 end
 
 -- Resize window
