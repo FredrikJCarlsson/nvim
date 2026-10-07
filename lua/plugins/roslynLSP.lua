@@ -1,12 +1,15 @@
 return {
     "seblj/roslyn.nvim",
     ft = "cs",
-    opts = {
-        config = {
+    -- mason must be set up first so $MASON points at the custom install root (see mason.lua)
+    dependencies = { "mason-org/mason.nvim" },
+    init = function()
+        -- roslyn.nvim reads server settings from vim.lsp.config, not from opts.
+        local config = {
             settings = {
                 ["csharp|background_analysis"] = {
-                    dotnet_analyzer_diagnostics_scope = "fullSolution",
-                    dotnet_compiler_diagnostics_scope = "fullSolution",
+                    dotnet_analyzer_diagnostics_scope = "openFiles",
+                    dotnet_compiler_diagnostics_scope = "openFiles",
                 },
                 ["csharp|completion"] = {
                     dotnet_provide_regex_completions = true,
@@ -28,10 +31,14 @@ return {
                     dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
                 },
                 ["csharp|code_lens"] = {
-                    dotnet_enable_references_code_lens = true,
+                    dotnet_enable_references_code_lens = false,
                 },
             },
-        },
+        }
+
+        vim.lsp.config("roslyn", config)
+    end,
+    opts = {
         -- "auto" | "roslyn" | "off"
         --
         -- - "auto": Does nothing for filewatching, leaving everything as default
