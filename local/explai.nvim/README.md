@@ -9,7 +9,7 @@ Neovim counterpart of the Explai VS Code extension.
 |---|---|---|
 | `<leader>ae` | `:Explai` | Explain the selection (visual) or current line |
 | `<leader>aE` | `:Explai!` | Same, in more detail |
-| `<leader>aq` | `:ExplaiAsk {question}` | Ask about the selection; `<Up>` recalls earlier questions |
+| `<leader>aQ` | `:ExplaiAsk {question}` | Ask about the selection; `<Up>` recalls earlier questions |
 | `<leader>ak` | `:ExplaiCallers [focus]` | How is the function at the cursor reached? |
 | `<leader>ai` | `:ExplaiFind {query}` | Find where something is implemented and jump there |
 | `<leader>al` | `:ExplaiLast` | Bring back the last popup (opens its file if needed) |
